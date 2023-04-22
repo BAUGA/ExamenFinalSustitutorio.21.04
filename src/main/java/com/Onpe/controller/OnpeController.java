@@ -33,7 +33,7 @@ public class OnpeController  extends WebMvcAutoConfiguration{
     @GetMapping("/actas_numero/{id}")
     public String listarnum(Model modelo,@PathVariable("id")String id) {
     	modelo.addAttribute("actas", iVotacionService.getGrupoVotacion(id));
-    	return"actas_numero";
+    	return"actas_por_numero";
     }
 
 }
