@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 import com.Onpe.service.IVotacionServices;
@@ -29,16 +31,22 @@ public class OnpeController  extends WebMvcAutoConfiguration{
     @Autowired
     private IVotacionServices iVotacionService;
     
-    @GetMapping("/actas")
-    public String actas() {
-	return "actas_por_numero";
-     }
+
     
 	  
-    @GetMapping("/actas_por_numero/{id}")
-    public String listarnum(Model modelo,@PathVariable("id")String id) {
+    @GetMapping("/actas_numero/{id}")
+    public String Listar(Model modelo,@PathVariable("id")String id) {
     	modelo.addAttribute("actas", iVotacionService.getGrupoVotacion(id));
     	return"actas_por_numero";
     }
+    
+    @RequestMapping("/actas_numero")
+    public String acta(Model modelo ,@RequestParam("nroMesa") String nroMesa) {
+    	
+    	modelo.addAttribute("actas",iVotacionService.getGrupoVotacion(nroMesa));
+    	return  "actas_por_numero";
+    	
+    
+    } 
 
 }
