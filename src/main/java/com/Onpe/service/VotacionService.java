@@ -9,7 +9,7 @@ import com.Onpe.repository.IVotacion;
 @Service
 
 
-public class VotacionService implements IVotacionService   {
+public class VotacionService implements IVotacionServices   {
 	@Autowired 
 	IVotacion iVotacion;
 	@Override
