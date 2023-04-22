@@ -1,5 +1,21 @@
 package com.Onpe.service;
 
-public class VotacionService {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.Onpe.model.Votacion;
+import com.Onpe.repository.IVotacion;
+
+@Service
+
+
+public class VotacionService implements IVotacionService   {
+	@Autowired 
+	IVotacion iVotacion;
+	@Override
+	public Votacion getGrupoVotacion(String id){
+		return iVotacion.getGrupoVotacion(id);
+	}
+	
 
 }
