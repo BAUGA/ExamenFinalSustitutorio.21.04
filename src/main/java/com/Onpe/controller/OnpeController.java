@@ -29,8 +29,13 @@ public class OnpeController  extends WebMvcAutoConfiguration{
     @Autowired
     private IVotacionServices iVotacionService;
     
+    @GetMapping("/actas")
+    public String actas() {
+	return "actas_por_numero";
+     }
+    
 	  
-    @GetMapping("/actas_numero/{id}")
+    @GetMapping("/actas_por_numero/{id}")
     public String listarnum(Model modelo,@PathVariable("id")String id) {
     	modelo.addAttribute("actas", iVotacionService.getGrupoVotacion(id));
     	return"actas_por_numero";
